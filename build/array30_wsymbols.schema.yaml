@@ -1,0 +1,106 @@
+__build_info:
+  rime_version: 1.7.3
+  timestamps:
+    array30_wsymbols.custom: 0
+    array30_wsymbols.schema: 1704652830
+    default: 1704643205
+    default.custom: 1704653932
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator
+key_binder:
+  bindings:
+    - {accept: "Control+p", send: Up, when: composing}
+    - {accept: "Control+n", send: Down, when: composing}
+    - {accept: "Control+b", send: Left, when: composing}
+    - {accept: "Control+f", send: Right, when: composing}
+    - {accept: "Control+a", send: Home, when: composing}
+    - {accept: "Control+e", send: End, when: composing}
+    - {accept: "Control+d", send: Delete, when: composing}
+    - {accept: "Control+k", send: "Shift+Delete", when: composing}
+    - {accept: "Control+h", send: BackSpace, when: composing}
+    - {accept: "Control+g", send: Escape, when: composing}
+    - {accept: "Control+bracketleft", send: Escape, when: composing}
+    - {accept: "Alt+v", send: Page_Up, when: composing}
+    - {accept: "Control+v", send: Page_Down, when: composing}
+    - {accept: ISO_Left_Tab, send: "Shift+Left", when: composing}
+    - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
+    - {accept: Tab, send: "Shift+Right", when: composing}
+    - {accept: minus, send: Page_Up, when: has_menu}
+    - {accept: equal, send: Page_Down, when: has_menu}
+    - {accept: comma, send: Page_Up, when: paging}
+    - {accept: period, send: Page_Down, when: has_menu}
+    - {accept: "Control+Shift+1", select: .next, when: always}
+    - {accept: "Control+Shift+2", toggle: ascii_mode, when: always}
+    - {accept: "Control+Shift+3", toggle: full_shape, when: always}
+    - {accept: "Control+Shift+4", toggle: simplification, when: always}
+    - {accept: "Control+Shift+5", toggle: extended_charset, when: always}
+    - {accept: "Control+Shift+exclam", select: .next, when: always}
+    - {accept: "Control+Shift+at", toggle: ascii_mode, when: always}
+    - {accept: "Control+Shift+numbersign", toggle: full_shape, when: always}
+    - {accept: "Control+Shift+dollar", toggle: simplification, when: always}
+    - {accept: "Control+Shift+percent", toggle: extended_charset, when: always}
+    - {accept: "Shift+space", toggle: full_shape, when: always}
+    - {accept: "Control+period", toggle: ascii_punct, when: always}
+  import_preset: default
+menu:
+  page_size: 10
+recognizer:
+  import_preset: default
+  patterns:
+    punct: ""
+    reverse_lookup: "[a-z`]*`+[a-z`]*"
+    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+schema:
+  author:
+    - "Terry Tsang <archerindigo@gmail.com>"
+  description: |
+    行列30 w+數字符號組。此方案用作輔助行列30，不適宜獨立使用。
+
+  name: "行列30 W+數字符號組"
+  schema_id: array30_wsymbols
+  version: 1.0
+speller:
+  alphabet: w1234567890
+  finals: 1234567890
+  initials: w
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: ["中文", "英文"]
+translator:
+  dictionary: array30_wsymbols
+  enable_charset_filter: true
+  enable_completion: false
+  enable_encoder: false
+  enable_sentence: false
+  enable_user_dict: false
+  encode_commit_history: false
+  preedit_format:
+    - "xform|^w1$|標點符號|"
+    - "xform|^w2$|括號符號|"
+    - "xform|^w3$|一般符號|"
+    - "xform|^w4$|數學符號|"
+    - "xform|^w5$|方向符號|"
+    - "xform|^w6$|單位符號|"
+    - "xform|^w7$|圖表符號|"
+    - "xform|^w8$|順序符號|"
+    - "xform|^w9$|希臘符號|"
+    - "xform|^w0$|注音符號|"
+  prism: array30_wsymbols
